@@ -87,7 +87,6 @@ router.get('/', async (req, res) => {
           userId = payload.id || payload.sub || 'admin-user';
         }
       } catch (err) {
-        // Invalid JWT, continue to deny
         logAccess(userId, 'jwt-admin-token', false, 'Invalid JWT token');
         res.status(401).json({ error: 'Invalid authentication token' });
         return;
