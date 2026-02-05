@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment 2 - E-commerce Product API</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .endpoint { background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #007bff; }
+        .method { color: #007bff; font-weight: bold; display: inline-block; width: 80px; }
+        code { background: #e9ecef; padding: 2px 8px; border-radius: 3px; font-family: monospace; }
+        .warning { background: #fff3cd; border-left: 4px solid #ffc107; padding: 10px; margin: 10px 0; }
+        .puzzle { background: #d1ecf1; border-left: 4px solid #17a2b8; padding: 10px; margin: 10px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>🛒 Assessment 2: E-commerce Product API</h1>
+    
+    <div class="warning">
+        <strong>⚠️ Performance Warning:</strong> This API has several performance issues that need optimization!
+    </div>
+
+    <h2>🛍️ Product Management Endpoints</h2>
+    
+    <div class="endpoint">
+        <div class="method">GET</div>
+        <strong>/api/products</strong>
+        <p>Get all products with pagination, filtering, and search</p>
+        <p><strong>Query Parameters:</strong></p>
+        <ul>
+            <li><code>page</code> - Page number (default: 1)</li>
+            <li><code>limit</code> - Items per page (default: 50)</li>
+            <li><code>search</code> - Search products by name/description</li>
+            <li><code>category</code> - Filter by category</li>
+            <li><code>sortBy</code> - Sort field (name, price, rating)</li>
+            <li><code>sortOrder</code> - asc or desc</li>
+            <li><code>admin</code> - Try setting this to "true" 🕵️</li>
+        </ul>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">GET</div>
+        <strong>/api/products/:id</strong>
+        <p>Get product by ID</p>
+        <p><strong>Query Parameters:</strong></p>
+        <ul>
+            <li><code>internal</code> - Try "yes" for internal data 🔍</li>
+        </ul>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">POST</div>
+        <strong>/api/products</strong>
+        <p>Create new product</p>
+        <code>{"name": "New Product", "price": 99.99, "category": "Electronics", "description": "Amazing product"}</code>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">PUT</div>
+        <strong>/api/products/:id</strong>
+        <p>Update product</p>
+        <code>{"name": "Updated Product", "price": 149.99}</code>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">DELETE</div>
+        <strong>/api/products/:id</strong>
+        <p>Delete product</p>
+    </div>
+
+    <h2>🛒 Cart Management Endpoints</h2>
+    
+    <div class="endpoint">
+        <div class="method">GET</div>
+        <strong>/api/cart</strong>
+        <p>Get user's cart</p>
+        <p><strong>Headers:</strong> <code>X-User-Id: your-user-id</code></p>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">POST</div>
+        <strong>/api/cart</strong>
+        <p>Add item to cart</p>
+        <code>{"productId": "1", "quantity": 2}</code>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">PUT</div>
+        <strong>/api/cart</strong>
+        <p>Update cart item quantity</p>
+        <code>{"productId": "1", "quantity": 5}</code>
+    </div>
+    
+    <div class="endpoint">
+        <div class="method">DELETE</div>
+        <strong>/api/cart?productId=1</strong>
+        <p>Remove item from cart</p>
+    </div>
+
+    <h2>🧩 Hidden Puzzles & Challenges</h2>
+    
+    <div class="puzzle">
+        <h3>🔍 Puzzle 1: Header Decoder</h3>
+        <p>There's a Base64 encoded message in the API response headers. Can you decode it?</p>
+    </div>
+    
+    <div class="puzzle">
+        <h3>🕵️ Puzzle 2: Secret Product Data</h3>
+        <p>Find the hidden endpoint that contains secret product profit information.</p>
+        <p><strong>Hints:</strong></p>
+        <ul>
+            <li>Multiple authentication methods work</li>
+            <li>Try different headers or query parameters</li>
+            <li>Authorization: Bearer secret-admin-token</li>
+            <li>X-API-Key: admin-api-key-2024</li>
+            <li>?secret=profit-data</li>
+        </ul>
+    </div>
+    
+    <div class="puzzle">
+        <h3>🔐 Puzzle 3: ROT13 Decoder</h3>
+        <p>Once you find the secret endpoint, decode the ROT13 message!</p>
+    </div>
+
+    <h2>🔧 Sample Data</h2>
+    <p>The API includes 1000 sample products across various categories:</p>
+    
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Sample Products</th>
+            <th>Price Range</th>
+        </tr>
+        <tr>
+            <td>Electronics</td>
+            <td>Laptops, Phones, Tablets</td>
+            <td>$50 - $1000</td>
+        </tr>
+        <tr>
+            <td>Clothing</td>
+            <td>Shirts, Pants, Shoes</td>
+            <td>$20 - $200</td>
+        </tr>
+        <tr>
+            <td>Books</td>
+            <td>Fiction, Non-fiction, Technical</td>
+            <td>$10 - $100</td>
+        </tr>
+        <tr>
+            <td>Home</td>
+            <td>Furniture, Decor, Appliances</td>
+            <td>$25 - $500</td>
+        </tr>
+    </table>
+
+    <h2>⚡ Performance Testing</h2>
+    <p>Test the API performance issues:</p>
+    <ul>
+        <li>Try loading all products without pagination</li>
+        <li>Search for products with common terms</li>
+        <li>Notice the slow response times</li>
+        <li>Check the performance warnings in response headers</li>
+    </ul>
+
+    <h2>🔒 Security Testing</h2>
+    <p>Try to exploit these security vulnerabilities:</p>
+    <ul>
+        <li>Access admin data without proper authentication</li>
+        <li>Inject malicious product IDs</li>
+        <li>Manipulate cart data with different user IDs</li>
+        <li>Find exposed internal information</li>
+    </ul>
+
+    <h2>📋 Your Mission</h2>
+    <p>Check the README.md file for your complete list of:</p>
+    <ul>
+        <li>🐛 <strong>Performance bugs</strong> to fix</li>
+        <li>🔒 <strong>Security vulnerabilities</strong> to patch</li>
+        <li>⚡ <strong>Features</strong> to implement</li>
+        <li>🧩 <strong>Puzzles</strong> to solve</li>
+    </ul>
+
+    <div class="warning">
+        <strong>💡 Pro Tip:</strong> Use browser dev tools to inspect network headers and responses for hidden clues!
+    </div>
+</body>
+</html>
